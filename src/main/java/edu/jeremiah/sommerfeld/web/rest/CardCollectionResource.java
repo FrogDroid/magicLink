@@ -120,7 +120,7 @@ public class CardCollectionResource {
     @Timed
     public ResponseEntity<CardCollection> getCardCollection(@PathVariable Long id) {
         log.debug("REST request to get CardCollection : {}", id);
-        CardCollection cardCollection = cardCollectionRepository.findOne(id);
+        CardCollection cardCollection = cardCollectionRepository.findOneWithEagerRelationships(id);
         return Optional.ofNullable(cardCollection)
             .map(result -> new ResponseEntity<>(
                 result,

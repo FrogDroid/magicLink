@@ -25,15 +25,8 @@
                 <constraints nullable="true" />
             </column>
             
-            <column name="card_id" type="bigint"/>
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
         
-        <addForeignKeyConstraint baseColumnNames="card_id"
-                                 baseTableName="super_type"
-                                 constraintName="fk_supertype_card_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="card"/>
-
     </changeSet>
 </databaseChangeLog>

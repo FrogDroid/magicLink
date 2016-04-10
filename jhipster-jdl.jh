@@ -43,7 +43,7 @@ entity SubType{
 	name String
 }
 
-relationship OneToMany{
+relationship ManyToMany{
 	Card{superType(id)} to SuperType {card}
 }
 
@@ -58,7 +58,7 @@ relationship OneToOne {
 	CardCollection{user(login)} to User
 }
 
-relationship OneToMany{
+relationship ManyToMany{
 	CardCollection{card(localId)} to Card {collection}
 }
 relationship ManyToMany{

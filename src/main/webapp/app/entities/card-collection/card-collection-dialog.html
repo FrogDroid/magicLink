@@ -20,6 +20,10 @@
                 <option value=""></option>
             </select>
         </div>
+        <div class="form-group">
+            <label for="field_card">card</label>
+            <select class="form-control" id="field_card" multiple name="card" ng-model="vm.cardCollection.cards" ng-options="card as card.localId for card in vm.cards track by card.id"></select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

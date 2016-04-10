@@ -32,6 +32,28 @@
                                  constraintName="fk_cardcollection_user_id"
                                  referencedColumnNames="id"
                                  referencedTableName="jhi_user"/>
+        <createTable tableName="card_collection_card">
+            <column name="cards_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_collections_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
 
+        <addPrimaryKey columnNames="card_collections_id, cards_id" tableName="card_collection_card"/>
+
+        <addForeignKeyConstraint baseColumnNames="card_collections_id"
+                                 baseTableName="card_collection_card"
+                                 constraintName="fk_card_collection_card_card_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="card_collection"/>
+
+        <addForeignKeyConstraint baseColumnNames="cards_id"
+                                 baseTableName="card_collection_card"
+                                 constraintName="fk_card_collection_card_cardcollection_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="card"/>
+        
     </changeSet>
 </databaseChangeLog>

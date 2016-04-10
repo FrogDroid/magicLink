@@ -73,6 +73,13 @@
             <span>{{vm.card.imageName}}<span>
         </dd>
         <hr>
+        <dt><span>superType</span></dt>
+        <dd>
+            <span ng-repeat="superType in vm.card.superTypes">
+                <a ui-sref="super-type-detail({id: {{superType.id}}})">{{superType.id}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+        <hr>
         <dt><span>type</span></dt>
         <dd>
             <span ng-repeat="type in vm.card.types">
@@ -92,11 +99,6 @@
             <span ng-repeat="color in vm.card.colors">
                 <a ui-sref="color-detail({id: {{color.id}}})">{{color.id}}</a>{{$last ? '' : ', '}}
             </span>
-        </dd>
-        <hr>
-        <dt><span>collection</span></dt>
-        <dd>
-            <a ui-sref="card-collection-detail({id:vm.card.collection.id})">{{vm.card.collection.id}}</a>
         </dd>
         <hr>
     </dl>

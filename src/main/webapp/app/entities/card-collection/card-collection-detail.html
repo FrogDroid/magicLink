@@ -8,6 +8,13 @@
             {{vm.cardCollection.user.login}}
         </dd>
         <hr>
+        <dt><span>card</span></dt>
+        <dd>
+            <span ng-repeat="card in vm.cardCollection.cards">
+                <a ui-sref="card-detail({id: {{card.id}}})">{{card.localId}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+        <hr>
     </dl>
 
     <button type="submit"

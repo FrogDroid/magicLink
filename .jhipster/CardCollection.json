@@ -13,8 +13,9 @@
       "relationshipId": 2,
       "relationshipName": "card",
       "otherEntityName": "card",
-      "relationshipType": "one-to-many",
-      "otherEntityRelationshipName": "collection"
+      "relationshipType": "many-to-many",
+      "otherEntityField": "localId",
+      "ownerSide": true
     }
   ],
   "fields": [],

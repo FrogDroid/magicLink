@@ -1,6 +1,5 @@
 package edu.jeremiah.sommerfeld.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
@@ -30,9 +29,11 @@ public class CardCollection implements Serializable {
     @JoinColumn(unique = true)
     private User user;
 
-    @OneToMany(mappedBy = "collection")
-    @JsonIgnore
+    @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(name = "card_collection_card",
+               joinColumns = @JoinColumn(name="card_collections_id", referencedColumnName="ID"),
+               inverseJoinColumns = @JoinColumn(name="cards_id", referencedColumnName="ID"))
     private Set<Card> cards = new HashSet<>();
 
     public Long getId() {

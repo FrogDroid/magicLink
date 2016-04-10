@@ -77,9 +77,30 @@
                 <constraints nullable="true" />
             </column>
             
-            <column name="collection_id" type="bigint"/>
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
+                <createTable tableName="card_super_type">
+            <column name="super_types_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cards_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="cards_id, super_types_id" tableName="card_super_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="cards_id"
+                                 baseTableName="card_super_type"
+                                 constraintName="fk_card_super_type_supertype_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="card"/>
+
+        <addForeignKeyConstraint baseColumnNames="super_types_id"
+                                 baseTableName="card_super_type"
+                                 constraintName="fk_card_super_type_card_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="super_type"/>
                 <createTable tableName="card_type">
             <column name="types_id" type="bigint">
                 <constraints nullable="false"/>
@@ -147,11 +168,5 @@
                                  referencedColumnNames="id"
                                  referencedTableName="color"/>
         
-        <addForeignKeyConstraint baseColumnNames="collection_id"
-                                 baseTableName="card"
-                                 constraintName="fk_card_collection_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="card_collection"/>
-
     </changeSet>
 </databaseChangeLog>

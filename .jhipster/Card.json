@@ -4,8 +4,9 @@
       "relationshipId": 1,
       "relationshipName": "superType",
       "otherEntityName": "superType",
-      "relationshipType": "one-to-many",
-      "otherEntityRelationshipName": "card"
+      "relationshipType": "many-to-many",
+      "otherEntityField": "id",
+      "ownerSide": true
     },
     {
       "relationshipId": 2,
@@ -35,8 +36,9 @@
       "relationshipId": 5,
       "relationshipName": "collection",
       "otherEntityName": "cardCollection",
-      "relationshipType": "many-to-one",
-      "otherEntityField": "id"
+      "relationshipType": "many-to-many",
+      "ownerSide": false,
+      "otherEntityRelationshipName": "card"
     }
   ],
   "fields": [

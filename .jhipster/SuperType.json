@@ -4,8 +4,9 @@
       "relationshipId": 1,
       "relationshipName": "card",
       "otherEntityName": "card",
-      "relationshipType": "many-to-one",
-      "otherEntityField": "id"
+      "relationshipType": "many-to-many",
+      "ownerSide": false,
+      "otherEntityRelationshipName": "superType"
     }
   ],
   "fields": [

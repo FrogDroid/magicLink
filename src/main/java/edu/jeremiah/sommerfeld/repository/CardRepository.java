@@ -12,10 +12,10 @@ import java.util.List;
  */
 public interface CardRepository extends JpaRepository<Card,Long> {
 
-    @Query("select distinct card from Card card left join fetch card.types left join fetch card.subTypes left join fetch card.colors")
+    @Query("select distinct card from Card card left join fetch card.superTypes left join fetch card.types left join fetch card.subTypes left join fetch card.colors")
     List<Card> findAllWithEagerRelationships();
 
-    @Query("select card from Card card left join fetch card.types left join fetch card.subTypes left join fetch card.colors where card.id =:id")
+    @Query("select card from Card card left join fetch card.superTypes left join fetch card.types left join fetch card.subTypes left join fetch card.colors where card.id =:id")
     Card findOneWithEagerRelationships(@Param("id") Long id);
 
 }

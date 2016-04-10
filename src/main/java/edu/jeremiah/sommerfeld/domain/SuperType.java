@@ -1,11 +1,14 @@
 package edu.jeremiah.sommerfeld.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -26,8 +29,10 @@ public class SuperType implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne
-    private Card card;
+    @ManyToMany(mappedBy = "superTypes")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Card> cards = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -45,12 +50,12 @@ public class SuperType implements Serializable {
         this.name = name;
     }
 
-    public Card getCard() {
-        return card;
+    public Set<Card> getCards() {
+        return cards;
     }
 
-    public void setCard(Card card) {
-        this.card = card;
+    public void setCards(Set<Card> cards) {
+        this.cards = cards;
     }
 
     @Override

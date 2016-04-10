@@ -68,9 +68,11 @@ public class Card implements Serializable {
     @Column(name = "image_name")
     private String imageName;
 
-    @OneToMany(mappedBy = "card")
-    @JsonIgnore
+    @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(name = "card_super_type",
+               joinColumns = @JoinColumn(name="cards_id", referencedColumnName="ID"),
+               inverseJoinColumns = @JoinColumn(name="super_types_id", referencedColumnName="ID"))
     private Set<SuperType> superTypes = new HashSet<>();
 
     @ManyToMany
@@ -94,8 +96,10 @@ public class Card implements Serializable {
                inverseJoinColumns = @JoinColumn(name="colors_id", referencedColumnName="ID"))
     private Set<Color> colors = new HashSet<>();
 
-    @ManyToOne
-    private CardCollection collection;
+    @ManyToMany(mappedBy = "cards")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<CardCollection> collections = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -249,12 +253,12 @@ public class Card implements Serializable {
         this.colors = colors;
     }
 
-    public CardCollection getCollection() {
-        return collection;
+    public Set<CardCollection> getCollections() {
+        return collections;
     }
 
-    public void setCollection(CardCollection cardCollection) {
-        this.collection = cardCollection;
+    public void setCollections(Set<CardCollection> cardCollections) {
+        this.collections = cardCollections;
     }
 
     @Override
