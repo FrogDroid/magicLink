@@ -1,0 +1,25 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipName": "user",
+      "otherEntityName": "user",
+      "relationshipType": "one-to-one",
+      "otherEntityField": "login",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "cardCollection"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipName": "card",
+      "otherEntityName": "card",
+      "relationshipType": "one-to-many",
+      "otherEntityRelationshipName": "collection"
+    }
+  ],
+  "fields": [],
+  "changelogDate": "20160410210308",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no"
+}

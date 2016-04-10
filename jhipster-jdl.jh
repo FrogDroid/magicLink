@@ -1,0 +1,68 @@
+
+entity CardCollection{
+	id Long required,
+}
+
+entity Card{
+    id Long,
+    name String,
+    manaCost String,
+    cmc Long,
+    type String,
+    rarity String,
+    text String,
+    flavor String,
+    artist String,
+    number String,
+    power Long,
+    toughness Long,
+    layout String,
+    multiverseid String,
+    imageName String
+}
+
+entity Color{
+	id Long required
+	name String required
+}
+
+entity SuperType{
+	id Long required
+	name String
+}
+
+
+entity Type{
+	id Long required
+	name String
+}
+
+
+entity SubType{
+	id Long required
+	name String
+}
+
+relationship OneToMany{
+	Card{superType(id)} to SuperType {card}
+}
+
+relationship ManyToMany{
+	Card{type(id)} to Type{card}
+}
+relationship ManyToMany{
+	Card{subType(id)} to SubType{card}
+}
+
+relationship OneToOne {
+	CardCollection{user(login)} to User
+}
+
+relationship OneToMany{
+	CardCollection{card(localId)} to Card {collection}
+}
+relationship ManyToMany{
+	Card{color(id)} to Color{card}
+}
+
+paginate CardCollection, Card with pagination

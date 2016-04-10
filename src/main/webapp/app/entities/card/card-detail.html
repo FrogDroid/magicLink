@@ -1,0 +1,109 @@
+
+<div>
+    <h2><span>Card</span> {{vm.card.id}}</h2>
+    <hr>
+    <dl class="dl-horizontal">
+        <dt><span>Name</dt></dt>
+        <dd>
+            <span>{{vm.card.name}}<span>
+        </dd>
+        <hr>
+        <dt><span>ManaCost</dt></dt>
+        <dd>
+            <span>{{vm.card.manaCost}}<span>
+        </dd>
+        <hr>
+        <dt><span>Cmc</dt></dt>
+        <dd>
+            <span>{{vm.card.cmc}}<span>
+        </dd>
+        <hr>
+        <dt><span>Type</dt></dt>
+        <dd>
+            <span>{{vm.card.type}}<span>
+        </dd>
+        <hr>
+        <dt><span>Rarity</dt></dt>
+        <dd>
+            <span>{{vm.card.rarity}}<span>
+        </dd>
+        <hr>
+        <dt><span>Text</dt></dt>
+        <dd>
+            <span>{{vm.card.text}}<span>
+        </dd>
+        <hr>
+        <dt><span>Flavor</dt></dt>
+        <dd>
+            <span>{{vm.card.flavor}}<span>
+        </dd>
+        <hr>
+        <dt><span>Artist</dt></dt>
+        <dd>
+            <span>{{vm.card.artist}}<span>
+        </dd>
+        <hr>
+        <dt><span>Number</dt></dt>
+        <dd>
+            <span>{{vm.card.number}}<span>
+        </dd>
+        <hr>
+        <dt><span>Power</dt></dt>
+        <dd>
+            <span>{{vm.card.power}}<span>
+        </dd>
+        <hr>
+        <dt><span>Toughness</dt></dt>
+        <dd>
+            <span>{{vm.card.toughness}}<span>
+        </dd>
+        <hr>
+        <dt><span>Layout</dt></dt>
+        <dd>
+            <span>{{vm.card.layout}}<span>
+        </dd>
+        <hr>
+        <dt><span>Multiverseid</dt></dt>
+        <dd>
+            <span>{{vm.card.multiverseid}}<span>
+        </dd>
+        <hr>
+        <dt><span>ImageName</dt></dt>
+        <dd>
+            <span>{{vm.card.imageName}}<span>
+        </dd>
+        <hr>
+        <dt><span>type</span></dt>
+        <dd>
+            <span ng-repeat="type in vm.card.types">
+                <a ui-sref="type-detail({id: {{type.id}}})">{{type.id}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+        <hr>
+        <dt><span>subType</span></dt>
+        <dd>
+            <span ng-repeat="subType in vm.card.subTypes">
+                <a ui-sref="sub-type-detail({id: {{subType.id}}})">{{subType.id}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+        <hr>
+        <dt><span>color</span></dt>
+        <dd>
+            <span ng-repeat="color in vm.card.colors">
+                <a ui-sref="color-detail({id: {{color.id}}})">{{color.id}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+        <hr>
+        <dt><span>collection</span></dt>
+        <dd>
+            <a ui-sref="card-collection-detail({id:vm.card.collection.id})">{{vm.card.collection.id}}</a>
+        </dd>
+        <hr>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

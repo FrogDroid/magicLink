@@ -1,0 +1,118 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipName": "superType",
+      "otherEntityName": "superType",
+      "relationshipType": "one-to-many",
+      "otherEntityRelationshipName": "card"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipName": "type",
+      "otherEntityName": "type",
+      "relationshipType": "many-to-many",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipId": 3,
+      "relationshipName": "subType",
+      "otherEntityName": "subType",
+      "relationshipType": "many-to-many",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipId": 4,
+      "relationshipName": "color",
+      "otherEntityName": "color",
+      "relationshipType": "many-to-many",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipId": 5,
+      "relationshipName": "collection",
+      "otherEntityName": "cardCollection",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "manaCost",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "cmc",
+      "fieldType": "Long"
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "type",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 5,
+      "fieldName": "rarity",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 6,
+      "fieldName": "text",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 7,
+      "fieldName": "flavor",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 8,
+      "fieldName": "artist",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 9,
+      "fieldName": "number",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 10,
+      "fieldName": "power",
+      "fieldType": "Long"
+    },
+    {
+      "fieldId": 11,
+      "fieldName": "toughness",
+      "fieldType": "Long"
+    },
+    {
+      "fieldId": 12,
+      "fieldName": "layout",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 13,
+      "fieldName": "multiverseid",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 14,
+      "fieldName": "imageName",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20160410210309",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no"
+}
