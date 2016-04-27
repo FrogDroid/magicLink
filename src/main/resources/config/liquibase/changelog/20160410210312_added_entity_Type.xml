@@ -17,12 +17,6 @@
         Added the entity Type.
     -->
     <changeSet id="20160410210312" author="jhipster">
-        <preConditions onFail="MARK_RAN">
-            <not>
-                <tableExists tableName="type"/>
-            </not>
-        </preConditions>
-
         <createTable tableName="type">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
@@ -30,9 +24,9 @@
             <column name="name" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-
+            
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
-
+        
     </changeSet>
 </databaseChangeLog>

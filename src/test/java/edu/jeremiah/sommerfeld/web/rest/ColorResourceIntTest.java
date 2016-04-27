@@ -44,6 +44,8 @@ public class ColorResourceIntTest {
 
     private static final String DEFAULT_NAME = "AAAAA";
     private static final String UPDATED_NAME = "BBBBB";
+    private static final String DEFAULT_CODE = "AAAAA";
+    private static final String UPDATED_CODE = "BBBBB";
 
     @Inject
     private ColorRepository colorRepository;
@@ -77,6 +79,7 @@ public class ColorResourceIntTest {
         colorSearchRepository.deleteAll();
         color = new Color();
         color.setName(DEFAULT_NAME);
+        color.setCode(DEFAULT_CODE);
     }
 
     @Test
@@ -96,6 +99,7 @@ public class ColorResourceIntTest {
         assertThat(colors).hasSize(databaseSizeBeforeCreate + 1);
         Color testColor = colors.get(colors.size() - 1);
         assertThat(testColor.getName()).isEqualTo(DEFAULT_NAME);
+        assertThat(testColor.getCode()).isEqualTo(DEFAULT_CODE);
 
         // Validate the Color in ElasticSearch
         Color colorEs = colorSearchRepository.findOne(testColor.getId());
@@ -131,7 +135,8 @@ public class ColorResourceIntTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(color.getId().intValue())))
-                .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
+                .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+                .andExpect(jsonPath("$.[*].code").value(hasItem(DEFAULT_CODE.toString())));
     }
 
     @Test
@@ -145,7 +150,8 @@ public class ColorResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(color.getId().intValue()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()));
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
+            .andExpect(jsonPath("$.code").value(DEFAULT_CODE.toString()));
     }
 
     @Test
@@ -168,6 +174,7 @@ public class ColorResourceIntTest {
         Color updatedColor = new Color();
         updatedColor.setId(color.getId());
         updatedColor.setName(UPDATED_NAME);
+        updatedColor.setCode(UPDATED_CODE);
 
         restColorMockMvc.perform(put("/api/colors")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -179,6 +186,7 @@ public class ColorResourceIntTest {
         assertThat(colors).hasSize(databaseSizeBeforeUpdate);
         Color testColor = colors.get(colors.size() - 1);
         assertThat(testColor.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testColor.getCode()).isEqualTo(UPDATED_CODE);
 
         // Validate the Color in ElasticSearch
         Color colorEs = colorSearchRepository.findOne(testColor.getId());
@@ -219,6 +227,7 @@ public class ColorResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.[*].id").value(hasItem(color.getId().intValue())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+            .andExpect(jsonPath("$.[*].code").value(hasItem(DEFAULT_CODE.toString())));
     }
 }

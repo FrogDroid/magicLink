@@ -24,6 +24,7 @@ entity Card{
 entity Color{
 	id Long required
 	name String required
+	code String
 }
 
 entity SuperType{

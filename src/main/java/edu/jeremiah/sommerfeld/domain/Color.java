@@ -31,6 +31,9 @@ public class Color implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "code")
+    private String code;
+
     @ManyToMany(mappedBy = "colors")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -50,6 +53,14 @@ public class Color implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public Set<Card> getCards() {
@@ -85,6 +96,7 @@ public class Color implements Serializable {
         return "Color{" +
             "id=" + id +
             ", name='" + name + "'" +
+            ", code='" + code + "'" +
             '}';
     }
 }

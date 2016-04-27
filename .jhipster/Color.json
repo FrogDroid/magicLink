@@ -17,6 +17,11 @@
       "fieldValidateRules": [
         "required"
       ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "code",
+      "fieldType": "String"
     }
   ],
   "changelogDate": "20160410210310",

@@ -67,7 +67,7 @@ class ColorGatlingTest extends Simulation {
             .exec(http("Create new color")
             .post("/api/colors")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "code":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_color_url"))).exitHereIfFailed
             .pause(10)

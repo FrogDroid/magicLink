@@ -17,12 +17,6 @@
         Added the entity Card.
     -->
     <changeSet id="20160410210309" author="jhipster">
-        <preConditions onFail="MARK_RAN">
-            <not>
-                <tableExists tableName="card"/>
-            </not>
-        </preConditions>
-
         <createTable tableName="card">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
@@ -30,59 +24,59 @@
             <column name="name" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-
+            
             <column name="mana_cost" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-
+            
             <column name="cmc" type="bigint">
                 <constraints nullable="true" />
             </column>
-
+            
             <column name="type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-
+            
             <column name="rarity" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-
+            
             <column name="text" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-
+            
             <column name="flavor" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-
+            
             <column name="artist" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-
+            
             <column name="number" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-
+            
             <column name="power" type="bigint">
                 <constraints nullable="true" />
             </column>
-
+            
             <column name="toughness" type="bigint">
                 <constraints nullable="true" />
             </column>
-
+            
             <column name="layout" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-
+            
             <column name="multiverseid" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-
+            
             <column name="image_name" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-
+            
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
                 <createTable tableName="card_super_type">
@@ -173,6 +167,6 @@
                                  constraintName="fk_card_color_card_id"
                                  referencedColumnNames="id"
                                  referencedTableName="color"/>
-
+        
     </changeSet>
 </databaseChangeLog>
